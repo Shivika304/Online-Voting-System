@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vote | Online Voting</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Welcome, {{ username }} 👋</h2>
+    <p class="subtitle">Cast your vote</p>
+
+    <form method="post" action="/vote">
+        <label>
+            <input type="radio" name="candidate_id" value="1" required>
+            <span> BJP </span>
+        </label><br><br>
+
+        <label>
+            <input type="radio" name="candidate_id" value="2">
+            <span> Congress </span>
+        </label><br><br>
+
+        <label>
+            <input type="radio" name="candidate_id" value="3">
+            <span> AAP </span>
+
+        </label><br><br>
+
+        <button type="submit">Submit Vote</button>
+    </form>
+
+    <br>
+    <a href="/logout">Logout</a>
+</div>
+
+</body>
+</html>

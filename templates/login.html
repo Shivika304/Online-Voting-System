@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login | Online Voting System</title>
+
+    <!-- Link CSS correctly (Flask way) -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>🗳️ Online Voting System</h2>
+        <p class="subtitle">Secure Login</p>
+
+        <form method="post" action="/login">
+            <input 
+                type="text" 
+                name="username" 
+                placeholder="Username" 
+                required
+            >
+
+            <input 
+                type="password" 
+                name="password" 
+                placeholder="Password" 
+                required
+            >
+
+            <button type="submit">Login</button>
+        </form>
+
+        <p class="link-text">
+            New user? <a href="/register">Create an account</a>
+        </p>
+        <p class="link-text">
+            Admin? <a href="{{ url_for('admin_login') }}">Login as Admin</a>
+        </p>
+    </div>
+
+</body>
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div class="popup-overlay">
+      <div class="popup-box">
+        {% for category, message in messages %}
+          <p class="{{ category }}">{{ message }}</p>
+        {% endfor %}
+
+        <a href="/login" class="popup-btn">Go back to Login page</a>
+      </div>
+    </div>
+  {% endif %}
+{% endwith %}
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="login-container" style="width: 600px">
+    <h2 >Admin Dashboard</h2>
+
+    <h3>Voters</h3>
+    <table border="1" width="100%" cellpadding="8">
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Voted</th>
+        </tr>
+        {% for v in voters %}
+        <tr>
+            <td>{{ v.id }}</td>
+            <td>{{ v.username }}</td>
+            <td>{{ "Yes" if v.has_voted else "No" }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+
+    <h3>Results</h3>
+    <table border="1" width="100%" cellpadding="8">
+        <tr>
+            <th>Candidate</th>
+            <th>Total Votes</th>
+        </tr>
+        {% for r in results %}
+        <tr>
+            <td>{{ r.name }}</td>
+            <td>{{ r.total_votes }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+    <a href="/admin-logout">Logout</a>
+</div>
+
+</body>
+</html>
